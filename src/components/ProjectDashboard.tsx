@@ -48,34 +48,27 @@ export const ProjectDashboard: React.FC = () => {
     }
   };
   return (
-    <>
-      <div className="three-column-container">
-        <div className="column column-1">
-          <h1>ManagMe</h1>
-          <button onClick={handleToggleForm}>
-            {showForm ? "Hide form" : "Add new"}
-          </button>
-          {showForm && (
-            <ProjectForm projectToEdit={projectToEdit} onSave={handleSave} />
-          )}
-          <ProjectList
-            projects={projects}
-            onEdit={handleEdit}
-            onSelectActive={selectActive}
-            onDelete={handleDelete}
-          />
-        </div>
-        {activeProject && (
-          <div className="column column-2">
-            <ActiveProjectDashboard activeProject={activeProject} />
-          </div>
+    <div className="three-column-container">
+      <div className="column column-1">
+        <h1>ManagMe</h1>
+        <button onClick={handleToggleForm}>
+          {showForm ? "Hide form" : "Add new"}
+        </button>
+        {showForm && (
+          <ProjectForm projectToEdit={projectToEdit} onSave={handleSave} />
         )}
+        <ProjectList
+          projects={projects}
+          onEdit={handleEdit}
+          onSelectActive={selectActive}
+          onDelete={handleDelete}
+        />
       </div>
-      {/* <div className="three-column-container">
-        <div className="column column-1">
-          <UserDashboard />
+      {activeProject && (
+        <div className="column column-2">
+          <ActiveProjectDashboard activeProject={activeProject} />
         </div>
-      </div> */}
-    </>
+      )}
+    </div>
   );
 };

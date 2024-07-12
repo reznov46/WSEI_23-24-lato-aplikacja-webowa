@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskService, { Task } from "../services/TaskService";
 import { TaskList } from "./TaskList";
 import { Button } from "@mui/material";
@@ -15,6 +15,10 @@ export const TaskDashboard: React.FC<TaskDashboardProps> = ({ projectId }) => {
     setShowForm(true);
     setTaskToEdit(task);
   };
+
+  useEffect(() => {
+    setTasks(TaskService.getTasks(projectId));
+  }, [projectId]);
 
   const handleDelete = (taskId: string) => {
     TaskService.deleteTask(taskId);

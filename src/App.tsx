@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ProjectDashboard } from "./components/ProjectDashboard";
 import "./styles/three-column.css";
-import UserService, { User } from "./services/UserService";
+import UserService from "./services/UserService";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 
@@ -30,7 +30,19 @@ const App: React.FC = () => {
       return <Register changePage={changePage} />;
     }
   }
-  return <ProjectDashboard />;
+  return (
+    <>
+      <button
+        onClick={() => {
+          UserService.logout();
+          setIsUserLoggedIn(false);
+        }}
+      >
+        Logout
+      </button>
+      <ProjectDashboard />;
+    </>
+  );
 };
 
 export default App;

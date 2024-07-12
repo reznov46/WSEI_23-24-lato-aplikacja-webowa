@@ -28,6 +28,9 @@ class UserService {
     users.push(user);
     localStorage.setItem(USER_KEY, JSON.stringify(users));
   }
+  static logout(): void {
+    localStorage.removeItem(LOGGED_USER_KEY);
+  }
 
   static login(user: Login): boolean {
     const users = this.getUsers();
